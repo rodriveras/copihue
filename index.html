@@ -19,7 +19,7 @@
         }
         </style>
 	    <style>
-/* Estilo para la capa 'Vendidas' */
+
 .etiqueta-vendida {
     background-color: #ff0000; /* Color rojo */
     color: #ffffff; /* Texto blanco para contraste */
@@ -31,7 +31,7 @@
     white-space: nowrap; /* Evita que la etiqueta se corte */
 }
 
-/* Estilo para la capa 'Disponibles' */
+
 .etiqueta-disponible {
     background-color: #008000; /* Color verde */
     color: #ffffff; /* Texto blanco */
@@ -363,7 +363,11 @@
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Lote'] !== null?String('<div style="color: #ffffff; font-size: 8pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Lote']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Vendidas_3'});
+           layer.bindTooltip(String(layer.feature.properties['Lote']), {
+    permanent: true,
+    direction: 'top',
+    className: 'etiqueta-vendida'
+}).openTooltip();
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -376,7 +380,11 @@
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['Lote'] !== null?String('<div style="color: #fff5f0; font-size: 8pt; font-family: \'Arial\', sans-serif;">' + layer.feature.properties['Lote']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Disponibles_4'});
+            layer.bindTooltip(String(layer.feature.properties['Lote']), {
+    permanent: true,
+    direction: 'top',
+    className: 'etiqueta-disponible'
+}).openTooltip();
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
